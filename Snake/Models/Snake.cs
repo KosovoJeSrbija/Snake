@@ -1,30 +1,38 @@
 ﻿using System.Collections.Generic;
+using Snake.Mechanics;
 
 namespace Snake.Models
 {
     public class Snake
     {
-        private Stack<Point> body;
+        private readonly string symbol = "~";
+        protected Queue<Point> body;
         
         /*
-         * Конструктор для создания змейки при начале игры  
+         * Конструктор для создания змейки при начале игры; имеет переменное 
+         * количество аргументов, так как игроку дается выбор, какой длины будет
+         * змейка при старте
          */
-        public Snake(params Point[] args)
+        public Snake(Direction direction, params Point[] args)
         {
-            body = new Stack<Point>();
+            body = new Queue<Point>();
             foreach(Point p in args)
             {
-                body.Push(p);
+                body.Enqueue(p);
+                Point elem = body.Peek();
+                elem.Draw(symbol);
             }
-
-            Move();
         }
 
-        public void Move()
+        internal void Move(Direction direction)
         {
-            
+            Point tail = body.Peek();
+            tail.Clear();
+            foreach(Point p in body)
+            {
+                p.Move(direction);
+                p.Draw(symbol);
+            }
         }
-
-        
     }
 }

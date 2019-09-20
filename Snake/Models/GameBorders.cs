@@ -5,58 +5,50 @@ namespace Snake.Models
     public class GameBorders
     {
         public readonly string symbol = "+"; 
+    }
 
-        class HorizontalBorder : Figure2D
+    public class HorizontalBorder : Figure2D
+    {
+        private GameBorders gameBorders;
+        public HorizontalBorder(Point p1, Point p2)
         {
-            private GameBorders gameBorders;
-            public HorizontalBorder(Point p1, Point p2)
+            elements = new List<Point>();
+            for(int i = p1.x_coordinate; i <= p2.x_coordinate; i++)
             {
-                elements = new List<Point>();
-                for(int i = p1.x_coordinate; i <= p2.x_coordinate; i++)
-                {
-                    elements.Add(new Point(i, p2.y_coordinate));
-                }
-                Draw();
+                elements.Add(new Point(i, p2.y_coordinate));
             }
-
-            public HorizontalBorder(GameBorders gameBorders)
-            {
-                this.gameBorders = gameBorders;
-            } 
-
-            protected override void Draw()
-            {
-                foreach(Point p in elements)
-                {
-                    p.Draw(gameBorders.symbol);
-                }
-            }
+            gameBorders = new GameBorders();
+            Draw();
         }
 
-        class VerticalBorder : Figure2D
+        protected override void Draw()
         {
-            private GameBorders gameBorders;
-            public VerticalBorder(Point p1, Point p2)
+            foreach(Point p in elements)
             {
-                elements = new List<Point>();
-                for(int i = p1.y_coordinate; i <= p2.y_coordinate; i++)
-                {
-                    elements.Add(new Point(p2.x_coordinate, i));
-                }
-                Draw();
+                p.Draw(gameBorders.symbol);
             }
+        }
+    }
 
-            public VerticalBorder(GameBorders gameBorders)
+    public class VerticalBorder : Figure2D
+    {
+        private GameBorders gameBorders;
+        public VerticalBorder(Point p1, Point p2)
+        {
+            elements = new List<Point>();
+            for(int i = p1.y_coordinate; i <= p2.y_coordinate; i++)
             {
-                this.gameBorders = gameBorders;
+                elements.Add(new Point(p2.x_coordinate, i));
             }
+            gameBorders = new GameBorders();
+            Draw();
+        }
 
-            protected override void Draw()
+        protected override void Draw()
+        {
+            foreach(Point p in elements)
             {
-                foreach(Point p in elements)
-                {
-                    p.Draw(gameBorders.symbol);
-                } 
+                p.Draw(gameBorders.symbol);
             }
         }
     }

@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Mechanics\Position.cs" />
+    <Compile Include="Mechanics\Direction.cs" />
     <Compile Include="Models\Figure2D.cs" />
     <Compile Include="Models\GameBorders.cs" />
     <Compile Include="Models\Point.cs" />

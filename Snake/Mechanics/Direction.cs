@@ -1,6 +1,6 @@
 ﻿namespace Snake.Mechanics
 {
-    public enum Position
+    public enum Direction
     {
         Up,
         Down,
