@@ -1,35 +1,13 @@
 ﻿using System;
+using Snake.Mechanics;
 
 namespace Snake.Models
 {
     public class Point
     {
-        public int x_coordinate
-        {
-            get
-            {
-                return x_coordinate;
-            }
-
-            set
-            {
-                if (value > 0) x_coordinate = value;
-            }
-        }
-
-        public int y_coordinate
-        {
-            get
-            {
-                return y_coordinate;
-            }
-
-            set
-            {
-                if(value > 0)
-                    y_coordinate = value;
-            }
-        }
+        private readonly string space = " ";
+        public int x_coordinate;
+        public int y_coordinate;
 
         public Point(int x_coordinate, int y_coordinate)
         {
@@ -68,12 +46,9 @@ namespace Snake.Models
             Console.Write(symbol);
         }
 
-        public enum Direction
+        public void Clear()
         {
-            Up,
-            Down,
-            Left,
-            Right
+            Draw(space);
         }
     }
 }
