@@ -21,21 +21,21 @@ namespace Snake.Models
             y_coordinate = p.y_coordinate;
         }
 
-        public void Move(Direction direction)
+        public void Move(int diff, Direction direction)
         {
             switch(direction)
             {
                 case Direction.Down:
-                    y_coordinate -= 1;
+                    y_coordinate += diff;
                     break;
                 case Direction.Up:
-                    y_coordinate += 1;
+                    y_coordinate -= diff;
                     break;
                 case Direction.Left:
-                    x_coordinate -= 1;
+                    x_coordinate -= diff;
                     break;
                 case Direction.Right:
-                    x_coordinate += 1;
+                    x_coordinate += diff;
                     break;
             }
         }
@@ -49,6 +49,11 @@ namespace Snake.Models
         public void Clear()
         {
             Draw(space);
+        }
+
+        public bool IsHit(Point p)
+        {
+            return x_coordinate == p.x_coordinate && y_coordinate == p.y_coordinate;
         }
     }
 }

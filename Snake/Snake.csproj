@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Mechanics\Direction.cs" />
+    <Compile Include="Mechanics\FoodGenerator.cs" />
     <Compile Include="Models\Figure2D.cs" />
     <Compile Include="Models\GameBorders.cs" />
     <Compile Include="Models\Point.cs" />
